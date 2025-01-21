@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <!-- Include the QRious library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(237, 140, 169);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color: black;
+            margin-top: 50px;
+        }
+        #qr-code-value {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #qr-code-image {
+            margin-top: 30px;
+            border: 10px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h2>UI QR Code Basic Generator</h2>
+    
+    <!-- The input field for the user to enter text or URL -->
+    <input type="text" id="qr-code-value" placeholder="Enter text or URL">
+    
+    <!-- The button to generate the QR code -->
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    
+    <!-- The image element where the QR code will be displayed -->
+    <br><br>
+    <img id="qr-code-image" alt="QR Code will appear here">
+    
+    <script>
+        function generateQRCode() {
+            // Get the value entered by the user
+            const value = document.getElementById('qr-code-value').value;
+            
+            // Create a QRious object and set its options
+            const qr = new QRious({
+                element: document.getElementById('qr-code-image'),
+                value: value,
+                size: 200, // Reduced size of the QR Code
+                level: 'H'  // Error correction level
+            });
+        }
+    </script>
+</body>
+</html>
